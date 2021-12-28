@@ -56,7 +56,7 @@ class ClueCard{
         // columns: outer, players
         // rows:    inner, elements
         
-        typedef std::vector<CCSTATE> row_t;
+        using row_t = std::vector<CCSTATE>;
 
         class column{
             public:
@@ -66,9 +66,9 @@ class ClueCard{
                 CCCHAR player;
         };
 
-        typedef column col_t;
+        using col_t = column;
 
-        typedef std::vector<column> card_t;
+        using card_t = std::vector<column>;
         card_t card; // This will be CARDWIDTH # of columns
 
 };
