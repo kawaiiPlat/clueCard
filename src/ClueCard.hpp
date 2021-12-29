@@ -11,8 +11,6 @@ class ClueCard{
         ClueCard();
         int print();
 
-        //ClueCard const& operator[](unsigned int i);
-
         static const int CARDLEN   = 21;
         static const int CARDWIDTH = 6;
 
@@ -52,25 +50,26 @@ class ClueCard{
             Lounge
         };
 
-    private:
-        // columns: outer, players
-        // rows:    inner, elements
-        
-        using row_t = std::vector<CCSTATE>;
 
-        class column{
+        // playerData: player's color + 
+        //             a column of data on what elements they may have
+        using col_t = std::vector<CCSTATE>;
+
+        class playerData{
             public:
-                column();
-                void setPlayer(CCCHAR player);
-                row_t row;
+                playerData();
+                bool setPlayer(CCCHAR player);
+                col_t column;
                 CCCHAR player;
+                CCSTATE& operator[](int);
         };
 
-        using col_t = column;
+        playerData& operator[](int);
 
-        using card_t = std::vector<column>;
+
+        using card_t = std::vector<playerData>;
+        // the card data can be accessed with [column][row], aka [player][element]
         card_t card; // This will be CARDWIDTH # of columns
-
 };
 
 #endif
