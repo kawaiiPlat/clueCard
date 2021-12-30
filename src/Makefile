@@ -17,6 +17,6 @@ ClueElement.o: ClueElement.cpp ClueElement.hpp
 test:
 	./main.out
 
-// rm -f doesn't fail if the file you try to remove doesn't exist
+# rm -f doesn't fail if the file you try to remove doesn't exist
 clean:
 	rm -f main.out *.o *.gch
