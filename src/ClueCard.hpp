@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <iostream>
-#include "ClueElements.hpp"
+#include "ClueElement.hpp"
 
 class ClueCard{
     public:
@@ -13,23 +13,11 @@ class ClueCard{
         static const int CARDLEN   = 21;
         static const int CARDWIDTH = 6;
 
-        // enum for the possible element-player states
-        // and c-style string descriptors for them
-        enum CCSTATE{
-            NOTHING,
-            POSSIBLE,
-            SURE
-        };
-        const char* const strCCSTATE[3] = {
-            "Nothing",
-            "Possible",
-            "Sure",
-        };
 
 
         // playerData: player's color + 
         //             a column of data on what elements they may have
-        using col_t = std::vector<CCSTATE>;
+        using col_t = std::vector<ClueElement::Element>;
 
         class playerData{
             public:
@@ -58,7 +46,7 @@ class ClueCard{
                 col_t column;
                 CCPLAYER player;
                 const char* getPlayerName();
-                CCSTATE& operator[](int);
+                ClueElement::Element& operator[](int);
         };
 
         playerData& operator[](int);

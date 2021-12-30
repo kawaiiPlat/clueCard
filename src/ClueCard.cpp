@@ -1,7 +1,13 @@
 #include "./ClueCard.hpp"
 
 ClueCard::playerData::playerData(){
-    column = col_t(ClueCard::CARDLEN, ClueCard::CCSTATE::NOTHING);
+    column = col_t(ClueCard::CARDLEN);
+    //set the elements to their appropriate CEIDS
+    for(int i = 0; i < NUM_CE_ELEMENTS; i++){
+        // https://stackoverflow.com/questions/11452920/how-to-cast-int-to-enum-in-c
+        ClueElement::CEIDS id = static_cast<ClueElement::CEIDS>(i);
+        column[i].init( id );
+    }
 }
 bool ClueCard::playerData::setPlayer(CCPLAYER player){
     this->player = player;
@@ -28,24 +34,24 @@ int ClueCard::print(){
     }
     std::cout << "\n";
 
-    std::cout << "The card is currently:\n" << "------------\n";
+    std::cout << "The card is currently:\n" << "-----------\n";
     for(int i = 0; i < CARDLEN; i++){
         //this is the "player" index
         for(int j = 0; j < CARDWIDTH; j++){
             //this is the "element" index
-            std::cout << card[j][i] << " ";
+            std::cout << card[j][i].getElementState() << " ";
         }
         std::cout << "\n";
     }
-    std::cout << "------------\n";
+    std::cout << "-----------\n";
     return 0;
 }
 
 
 // the operator[] overrides that allow syntatically simple access
-ClueCard::playerData &ClueCard::operator[](int index){
+ClueCard::playerData& ClueCard::operator[](int index){
     return card[index];
 }
-ClueCard::CCSTATE &ClueCard::playerData::operator[](int index){
+ClueElement::Element& ClueCard::playerData::operator[](int index){
     return column[index];
 }
