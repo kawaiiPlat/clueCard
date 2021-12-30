@@ -12,6 +12,12 @@ namespace ClueElement{
             POSSIBLE,
             SURE
         };
+        const char* const strCESTATE[NUM_CE_STATES] = {
+            "Nothing",
+            "Doesn't Have",
+            "Possible",
+            "Sure"
+        };
 
         // enum for all the clue elements
         // and c-style string descriptors for them
@@ -38,13 +44,6 @@ namespace ClueElement{
             STUDY,
             HALL,
             LOUNGE
-        };
-
-        const char* const strCESTATE[NUM_CE_STATES] = {
-            "Nothing",
-            "Doesn't Have",
-            "Possible",
-            "Sure"
         };
         const char* const strCEIDS[NUM_CE_ELEMENTS]{
             "Red",
