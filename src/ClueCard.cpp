@@ -3,23 +3,36 @@
 ClueCard::playerData::playerData(){
     column = col_t(ClueCard::CARDLEN, ClueCard::CCSTATE::NOTHING);
 }
-bool ClueCard::playerData::setPlayer(CCCHAR player){
+bool ClueCard::playerData::setPlayer(CCPLAYER player){
     this->player = player;
     return true;
 }
+const char* ClueCard::playerData::getPlayerName(){
+    return ClueCard::playerData::strCCPLAYER[player];
+}
 
 ClueCard::ClueCard(){
-    card = card_t(ClueCard::CARDWIDTH); // the Columns are 
+    // initalize the data for each player
+    card = card_t(ClueCard::CARDWIDTH);
 
-    //set the column players
+    //set the column player "name"
+    for(playerData pd : card){
+        pd.setPlayer(ClueCard::playerData::CCPLAYER::RED);
+    }
 }
 
 int ClueCard::print(){
+    std::cout << "The players are: \n";
+    for(playerData pd : card){
+        std::cout << pd.getPlayerName() << ", ";
+    }
+    std::cout << "\n";
+
     std::cout << "The card is currently:\n" << "------------\n";
     for(int i = 0; i < CARDLEN; i++){
-        //this is the "down" index
+        //this is the "player" index
         for(int j = 0; j < CARDWIDTH; j++){
-            // this is the "across" index
+            //this is the "element" index
             std::cout << card[j][i] << " ";
         }
         std::cout << "\n";
@@ -28,8 +41,9 @@ int ClueCard::print(){
     return 0;
 }
 
-ClueCard::playerData &ClueCard::operator[](int index){
 
+// the operator[] overrides that allow syntatically simple access
+ClueCard::playerData &ClueCard::operator[](int index){
     return card[index];
 }
 ClueCard::CCSTATE &ClueCard::playerData::operator[](int index){

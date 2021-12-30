@@ -7,4 +7,6 @@ int main(int argc, char* argv[]){
     ClueCard testing;
 
     testing.print();
+
+    std::cout << testing.strCCSTATE[ClueCard::CCSTATE::NOTHING] << "\n";
 }

@@ -3,8 +3,7 @@
 
 #include <vector>
 #include <iostream>
-int clueCardTest();
-
+#include "ClueElements.hpp"
 
 class ClueCard{
     public:
@@ -14,40 +13,17 @@ class ClueCard{
         static const int CARDLEN   = 21;
         static const int CARDWIDTH = 6;
 
+        // enum for the possible element-player states
+        // and c-style string descriptors for them
         enum CCSTATE{
             NOTHING,
             POSSIBLE,
             SURE
         };
-
-        enum CCCHAR{
-            RED,
-            GREEN,
-            YELLOW,
-            PURPLE,
-            BLUE,
-            WHITE
-        };
-
-        enum CCWEAPON{
-            CANDLESTICK,
-            KNIFE,
-            PIPE,
-            REVOLVER,
-            ROPE,
-            WRENCH
-        };
-
-        enum CCROOM{
-            Kitchen,
-            Ballroom,
-            Conservatory,
-            DiningRoom,
-            BilliardRoom,
-            Library,
-            Study,
-            Hall,
-            Lounge
+        const char* const strCCSTATE[3] = {
+            "Nothing",
+            "Possible",
+            "Sure",
         };
 
 
@@ -57,10 +33,31 @@ class ClueCard{
 
         class playerData{
             public:
+                // Enum for the player IDs
+                enum CCPLAYER{
+                    RED,
+                    GREEN,
+                    YELLOW,
+                    PURPLE,
+                    BLUE,
+                    WHITE
+                };
+            private:
+                // c-style character string names
+                const char* const strCCPLAYER[CARDWIDTH]{
+                    "Red",
+                    "Green",
+                    "Yellow",
+                    "Purple",
+                    "Blue",
+                    "White"
+                };
+            public:
                 playerData();
-                bool setPlayer(CCCHAR player);
+                bool setPlayer(CCPLAYER player);
                 col_t column;
-                CCCHAR player;
+                CCPLAYER player;
+                const char* getPlayerName();
                 CCSTATE& operator[](int);
         };
 
