@@ -29,7 +29,7 @@ ClueCard::ClueCard(){
     card[1].setPlayer( ClueCard::playerData::CCPLAYER::GREEN    );
     card[2].setPlayer( ClueCard::playerData::CCPLAYER::YELLOW   );
     card[3].setPlayer( ClueCard::playerData::CCPLAYER::PURPLE   );
-    card[4].setPlayer( ClueCard::playerData::CCPLAYER::BLUE     );
+    card[4].setPlayer( ClueCard::playerData::CCPLAYER::CYAN     );
     card[5].setPlayer( ClueCard::playerData::CCPLAYER::WHITE    );
 }
 
@@ -44,14 +44,9 @@ void ClueCard::updateCard(int playerWhoShowed, std::vector<ClueElement::CEIDS> w
         throw std::out_of_range("updateCard: Recieved an impossible player index");
     }
 
-    // std::cout << "The player is: " << playerWhoShowed << "\n";
-    // std::cout << "What was suggested: ";
     // update the values to be possible
     for(ClueElement::CEIDS ID : whatWasSuggested){
         card[playerWhoShowed][(int)ID].updateState(ClueElement::CESTATE::POSSIBLE);
-        // std::cout << ID << ": " << ClueElement::strCEIDS[ID] << ", state is ";
-        // std::cout << card[playerWhoShowed][(int)ID].getStrElementState();
-        // std::cout << " | ";
     }
     std::cout << "\n";
 
@@ -96,17 +91,17 @@ int ClueCard::print(){
                 std::cout << COLOR_MAGENTA;
                 break;
 
-            case ClueCard::playerData::CCPLAYER::BLUE:
-                std::cout << COLOR_BLUE;
+            case ClueCard::playerData::CCPLAYER::CYAN:
+                std::cout << COLOR_CYAN ;
                 break;
 
             case ClueCard::playerData::CCPLAYER::WHITE:
                 std::cout << COLOR_WHITE;
                 break;
         }
-        std::cout << c << " ";
+        std::cout << c << COLOR_NC " ";
     }
-    std::cout << COLOR_NC "|\n";
+    std::cout << "|\n";
 
     for(int i = 0; i < CARDLEN; i++){
         //this is the "player" index
@@ -127,7 +122,7 @@ int ClueCard::print(){
             } else if(numPos == 1){
                 std::cout << COLOR_YELLOW;
             } else if(numPos == 2){
-                std::cout << COLOR_BLUE;
+                std::cout << COLOR_CYAN;
             } else if(numPos > 2){
                 std::cout << COLOR_GREEN;
             }

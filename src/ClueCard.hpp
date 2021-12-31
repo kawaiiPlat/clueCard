@@ -35,7 +35,7 @@ class ClueCard{
                     GREEN,
                     YELLOW,
                     PURPLE,
-                    BLUE,
+                    CYAN,
                     WHITE
                 };
             private:
@@ -45,7 +45,7 @@ class ClueCard{
                     "Green",
                     "Yellow",
                     "Purple",
-                    "Blue",
+                    "Cyan",
                     "White"
                 };
                 CCPLAYER player;
