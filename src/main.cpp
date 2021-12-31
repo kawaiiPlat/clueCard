@@ -15,6 +15,8 @@ int main(int argc, char* argv[]){
     guess.push_back(ClueElement::CEIDS::RED);
     ClueCard::playerData::CCPLAYER player = ClueCard::playerData::CCPLAYER::RED;
     testing.updateCard(player, guess);
+    testing.updateCard(player, guess);
+    testing.updateCard(player, guess);
 
     testing.print();
 }

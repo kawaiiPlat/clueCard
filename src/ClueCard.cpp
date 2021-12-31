@@ -63,7 +63,22 @@ int ClueCard::print(){
         //this is the "player" index
         for(int j = 0; j < CARDWIDTH; j++){
             //this is the "element" index
+
+            int numPos = card[j][i].getNumTimesWasPossible();
+            if(numPos == 0){
+                std::cout << COLOR_BLACK;
+            } else if(numPos == 1){
+                std::cout << COLOR_YELLOW;
+            } else if(numPos == 2){
+                std::cout << COLOR_BLUE;
+            } else if(numPos > 2){
+                std::cout << COLOR_GREEN;
+            }
+
             std::cout << card[j][i].getElementState() << " ";
+                
+            //clear the color
+            std::cout << COLOR_NC;
         }
         std::cout << "\n";
     }

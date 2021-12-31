@@ -6,6 +6,9 @@
 #include <cassert> //for assertions
 // uncomment the line below to disable assertions, doesn't seem to actually disable?
 //#define NDEBUG
+
+#include "colors.hpp" // preprocessor macros to put color codes into std::cout
+
 #include "ClueElement.hpp"
 
 class ClueCard{

@@ -75,6 +75,7 @@ namespace ClueElement{
             const char* getStrElementState();
             ClueElement::CEIDS getElementID();
             ClueElement::CESTATE getElementState();
+            int getNumTimesWasPossible();
 
             void updateState(ClueElement::CESTATE state);
 

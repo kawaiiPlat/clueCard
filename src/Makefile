@@ -8,7 +8,7 @@ main.out: main.cpp ClueCard.o ClueElement.o
 	$(CC) $(CFLAGS) -o $@ $^
 
 # $< is the first dependency
-ClueCard.o: ClueCard.cpp ClueCard.hpp ClueElement.o
+ClueCard.o: ClueCard.cpp ClueCard.hpp colors.hpp ClueElement.o
 	$(CC) $(CFLAGS) -c $<
 
 ClueElement.o: ClueElement.cpp ClueElement.hpp

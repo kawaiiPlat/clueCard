@@ -20,6 +20,9 @@ ClueElement::CEIDS ClueElement::Element::getElementID(){
 ClueElement::CESTATE ClueElement::Element::getElementState(){ 
     return STATE;
 };
+int ClueElement::Element::getNumTimesWasPossible(){
+    return numTimesWasPossible;
+}
 
 void ClueElement::Element::updateState(ClueElement::CESTATE state){
     if(this->STATE == ClueElement::CESTATE::DOESNTHAVE){
