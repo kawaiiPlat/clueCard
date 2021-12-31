@@ -4,10 +4,13 @@ CFLAGS=-std=c++11 -g -Wall
 all:main.out
 
 # $@ is target name, $^ is dependencies
-main.out: main.cpp ClueCard.o ClueElement.o
+main.out: main.cpp ClueGame.o ClueCard.o ClueElement.o
 	$(CC) $(CFLAGS) -o $@ $^
 
 # $< is the first dependency
+ClueGame.o: ClueGame.cpp ClueGame.hpp
+	$(CC) $(CFLAGS) -c $< 
+
 ClueCard.o: ClueCard.cpp ClueCard.hpp colors.hpp ClueElement.o
 	$(CC) $(CFLAGS) -c $<
 
