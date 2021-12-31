@@ -2,7 +2,8 @@
 A C++ CLI CLue (Cluedo) Detective Card program
 
 # Goals
-- [ ] Display a grid-style list of characters, weapons, and rooms
+- [x] Display a grid-style list of characters, weapons, and rooms
+- [x] Color the output for greater readability
 - [ ] Update the list on a **Suggestion** by **Suggestion** basis.
 - [ ] Update the characters of the card "in place" (Without moving from the current position in the terminal) by using ASCII Escape Characters
 - [ ] Mark what players have passed on a specific **Suggestion** with some marker in the grid
