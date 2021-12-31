@@ -14,7 +14,7 @@
 #define COLOR_BLUE              "\e[0;34m"
 #define COLOR_MAGENTA           "\e[0;35m"
 #define COLOR_CYN               "\e[0;36m"
-#define COLOR_WHITE             "\e[0;36m"
+#define COLOR_WHITE             "\e[0;37m"
 
 #define COLOR_BRIGHT_BLACK      "\e[0;90m"
 #define COLOR_BRIGHT_RED        "\e[0;91m"
@@ -23,7 +23,7 @@
 #define COLOR_BRIGHT_BLUE       "\e[0;94m"
 #define COLOR_BRIGHT_MAGENTA    "\e[0;95m"
 #define COLOR_BRIGHT_CYAN       "\e[0;96m"
-#define COLOR_BRIGHT_WHITE      "\e[0;96m"
+#define COLOR_BRIGHT_WHITE      "\e[0;97m"
 
 // Background Colors
 #define COLOR_BLACKB             "\e[40m"
@@ -33,7 +33,7 @@
 #define COLOR_BLUEB              "\e[44m"
 #define COLOR_MAGENTAB           "\e[45m"
 #define COLOR_CYANB              "\e[46m"
-#define COLOR_WHITEB             "\e[46m"
+#define COLOR_WHITEB             "\e[47m"
 
 #define COLOR_BRIGHT_BLACKB      "\e[100m"
 #define COLOR_BRIGHT_REDB        "\e[101m"
@@ -42,6 +42,6 @@
 #define COLOR_BRIGHT_BLUEB       "\e[104m"
 #define COLOR_BRIGHT_MAGENTAB    "\e[105m"
 #define COLOR_BRIGHT_CYANB       "\e[106m"
-#define COLOR_BRIGHT_WHITEB      "\e[106m"
+#define COLOR_BRIGHT_WHITEB      "\e[107m"
 
 #endif
