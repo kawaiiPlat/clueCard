@@ -20,3 +20,21 @@ ClueElement::CEIDS ClueElement::Element::getElementID(){
 ClueElement::CESTATE ClueElement::Element::getElementState(){ 
     return STATE;
 };
+
+void ClueElement::Element::updateState(ClueElement::CESTATE state){
+    if(this->STATE == ClueElement::CESTATE::DOESNTHAVE){
+        return;
+    }
+    this->STATE = state;
+    switch(state){
+        case ClueElement::CESTATE::NOTHING:
+            break;
+        case ClueElement::CESTATE::DOESNTHAVE:
+            break;
+        case ClueElement::CESTATE::POSSIBLE:
+            numTimesWasPossible++;
+            break;
+        case ClueElement::CESTATE::SURE:
+            break;
+    }
+};

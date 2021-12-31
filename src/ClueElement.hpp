@@ -76,6 +76,8 @@ namespace ClueElement{
             ClueElement::CEIDS getElementID();
             ClueElement::CESTATE getElementState();
 
+            void updateState(ClueElement::CESTATE state);
+
             Element();
             void init(ClueElement::CEIDS ID);
 

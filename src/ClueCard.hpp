@@ -3,12 +3,16 @@
 
 #include <vector>
 #include <iostream>
+#include <cassert> //for assertions
+// uncomment the line below to disable assertions, doesn't seem to actually disable?
+//#define NDEBUG
 #include "ClueElement.hpp"
 
 class ClueCard{
     public:
         ClueCard();
         int print();
+        void updateCard(int playerWhoShowed, std::vector<ClueElement::CEIDS> whatWasSuggested);
 
         static const int CARDLEN   = 21;
         static const int CARDWIDTH = 6;
@@ -43,9 +47,11 @@ class ClueCard{
             public:
                 playerData();
                 bool setPlayer(CCPLAYER player);
+
                 col_t column;
                 CCPLAYER player;
                 const char* getPlayerName();
+
                 ClueElement::Element& operator[](int);
         };
 
