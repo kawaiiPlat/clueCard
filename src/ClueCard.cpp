@@ -118,7 +118,7 @@ int ClueCard::print(){
 
             int numPos = card[j][i].getNumTimesWasPossible();
             if(numPos == 0){
-                std::cout << COLOR_BLACK;
+                std::cout << COLOR_BRIGHT_BLACK;
             } else if(numPos == 1){
                 std::cout << COLOR_YELLOW;
             } else if(numPos == 2){

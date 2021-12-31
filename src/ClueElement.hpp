@@ -45,6 +45,16 @@ namespace ClueElement{
             HALL,
             LOUNGE
         };
+
+        const int NUM_CE_CHARACTERS = 6;
+        const int IDX_CE_CHARACTERS = 0;
+
+        const int NUM_CE_WEAPONS = 6;
+        const int IDX_CE_WEAPONS = 6;
+
+        const int NUM_CE_ROOMS = 9;
+        const int IDX_CE_ROOMS = 12;
+
         const char* const strCEIDS[NUM_CE_ELEMENTS]{
             "Red",
             "Green",
