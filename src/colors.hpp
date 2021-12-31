@@ -1,5 +1,15 @@
 //ANSI color codes from https://www.delftstack.com/howto/cpp/how-to-colorize-output-in-console-cpp/
 //reference: https://en.wikipedia.org/wiki/ANSI_escape_code#Colors
+
+
+/*
+ * This is a collection of 4-bit ANSI color code preproccessor macros
+ * It does not currently check for terminal compatibility
+ * 
+ * example usage: std::cout << COLOR_RED "Red" COLOR_NC "normal\n";
+ * The strings will be automatically appended together
+ */
+
 #ifndef COLORS_H
 #define COLORS_H
 
