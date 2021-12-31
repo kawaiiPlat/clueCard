@@ -22,7 +22,7 @@
 #define COLOR_BRIGHT_YELLOW     "\e[0;93m"
 #define COLOR_BRIGHT_BLUE       "\e[0;94m"
 #define COLOR_BRIGHT_MAGENTA    "\e[0;95m"
-#define COLOR_BRIGHT_CYAN        "\e[0;96m"
+#define COLOR_BRIGHT_CYAN       "\e[0;96m"
 #define COLOR_BRIGHT_WHITE      "\e[0;96m"
 
 // Background Colors
@@ -41,7 +41,7 @@
 #define COLOR_BRIGHT_YELLOWB     "\e[103m"
 #define COLOR_BRIGHT_BLUEB       "\e[104m"
 #define COLOR_BRIGHT_MAGENTAB    "\e[105m"
-#define COLOR_BRIGHT_CYANB        "\e[106m"
+#define COLOR_BRIGHT_CYANB       "\e[106m"
 #define COLOR_BRIGHT_WHITEB      "\e[106m"
 
 #endif
