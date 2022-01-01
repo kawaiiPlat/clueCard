@@ -61,9 +61,10 @@ void ClueGame::update(){
     guess.push_back(getElement(ClueElement::IDX_CE_WEAPONS    ,ClueElement::NUM_CE_WEAPONS     , "Select A Weapon: ")   );
     guess.push_back(getElement(ClueElement::IDX_CE_CHARACTERS ,ClueElement::NUM_CE_CHARACTERS  , "Select A Character: "));
 
-    ClueCard::playerData::CCPLAYER whoAnswered = pickPlayer("What Player answered?", true);
+    ClueCard::playerData::CCPLAYER whoAnswered;
 
-    //todo check to see if the player who answered was the current player which makes no sense
+    whoAnswered = pickPlayer("What Player answered?", true);
+
 
     updateCard(currentPlayer, whoAnswered, guess);
     //todo update currentPlayer
@@ -80,6 +81,13 @@ void ClueGame::update(){
 
         std::cout << "\n";
         return;
+    }
+    if(whoAnswered == currentPlayer){
+        ClueGame::print();
+        std::cout   << COLOR_MAGENTA "Since "
+                    << card[0].getPlayerName(currentPlayer) 
+                    << " answered (No One answered and they didn't guess) "
+                    << "they either had none, 1, or 2 of the elements\n" COLOR_NC;
     }
 
     std::cout << MOVE_TO_MESSAGE_POS << "Press Enter to advance, or 'q' and Enter to end the game:\n";
