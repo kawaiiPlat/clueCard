@@ -36,7 +36,8 @@ class ClueCard{
                     YELLOW,
                     PURPLE,
                     CYAN,
-                    WHITE
+                    WHITE,
+                    NONE
                 };
             private:
                 // c-style character string names
