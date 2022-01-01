@@ -88,8 +88,11 @@ void ClueGame::update(){
 
     if(line == "q"){
         gameOver = true;
+        return;
     }
 
+    //increment the player
+    currentPlayer = static_cast<ClueCard::playerData::CCPLAYER>(((int)currentPlayer + 1)%CARDWIDTH);
 }
 bool ClueGame::isGameOver(){
     return gameOver;
