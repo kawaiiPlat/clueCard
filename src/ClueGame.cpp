@@ -64,6 +64,12 @@ void ClueGame::update(){
     ClueCard::playerData::CCPLAYER whoAnswered = pickPlayer("What Player answered?", true);
 
     //todo check to see if the player who answered was the current player which makes no sense
+
+    updateCard(currentPlayer, whoAnswered, guess);
+    //todo update currentPlayer
+
+    ClueGame::print();
+
     if(whoAnswered == ClueCard::playerData::CCPLAYER::NONE){
         gameOver = true;
         std::cout << "The game is over, accuse with:";
@@ -73,13 +79,8 @@ void ClueGame::update(){
         }
 
         std::cout << "\n";
-
         return;
     }
-
-    updateCard(whoAnswered, guess);
-    //todo update currentPlayer
-    ClueGame::print();
 
     std::cout << MOVE_TO_MESSAGE_POS << "Press Enter to advance, or 'q' and Enter to end the game:\n";
     std::string line;

@@ -36,20 +36,31 @@ ClueCard::ClueCard(){
     card[5].setPlayer( ClueCard::playerData::CCPLAYER::WHITE    );
 }
 
-// updateCard should be called with playerWhoShowed == -1 to indicate no one showed (in this case the game is over)
-void ClueCard::updateCard(int playerWhoShowed, std::vector<ClueElement::CEIDS> whatWasSuggested){
+// updateCard should be called with playerWhoShowed == NONE to indicate no one showed (in this case the game is over)
+void ClueCard::updateCard(ClueCard::playerData::CCPLAYER activePlayer, ClueCard::playerData::CCPLAYER playerWhoShowed, std::vector<ClueElement::CEIDS> whatWasSuggested){
     assert(whatWasSuggested.size() == 3); // there should always be 3 items
-    if(playerWhoShowed < 0){
-        // game is over, mark all three sure
-    }
     if(playerWhoShowed >= CARDWIDTH){
         //invalid range, throw error
         throw std::out_of_range("updateCard: Recieved an impossible player index");
     }
 
-    // update the values to be possible
-    for(ClueElement::CEIDS ID : whatWasSuggested){
-        card[playerWhoShowed][(int)ID].updateState(ClueElement::CESTATE::POSSIBLE);
+
+    if(playerWhoShowed == ClueCard::playerData::CCPLAYER::NONE){
+        // The player was No One, therefore the game is over
+        // mark the whole row of each element as SURE
+        for(int i = 0; i < CARDWIDTH; i++){
+            for(ClueElement::CEIDS ID : whatWasSuggested){
+                card[i][(int)ID].updateState(ClueElement::CESTATE::SURE);
+            }
+        }
+    } else {
+        // update the values to be possible
+        for(int i = (int)activePlayer; i <= activePlayer + playerWhoShowed; i++){
+            int idx = i % CARDWIDTH;
+            for(ClueElement::CEIDS ID : whatWasSuggested){
+                card[idx][(int)ID].updateState(ClueElement::CESTATE::POSSIBLE);
+            }
+        }
     }
     std::cout << "\n";
 
