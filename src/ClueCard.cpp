@@ -57,12 +57,6 @@ void ClueCard::updateCard(int playerWhoShowed, std::vector<ClueElement::CEIDS> w
 
 
 int ClueCard::print(){
-    std::cout << "The players are: \n";
-
-    for(playerData pd : card){
-        std::cout << pd.getPlayerName() << ", ";
-    }
-    std::cout << "\n";
 
     std::cout   << "The card is currently:\n";
 
