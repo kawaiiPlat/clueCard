@@ -55,10 +55,17 @@ void ClueCard::updateCard(ClueCard::playerData::CCPLAYER activePlayer, ClueCard:
         }
     } else {
         // update the values to be possible
+        ClueElement::CESTATE newState = ClueElement::CESTATE::DOESNTHAVE;
         for(int i = (int)activePlayer; i <= activePlayer + playerWhoShowed; i++){
             int idx = i % CARDWIDTH;
+
+            if(idx == (int)playerWhoShowed){
+                // this is the one who actually showed
+                newState = ClueElement::CESTATE::POSSIBLE;
+            }
+
             for(ClueElement::CEIDS ID : whatWasSuggested){
-                card[idx][(int)ID].updateState(ClueElement::CESTATE::POSSIBLE);
+                card[idx][(int)ID].updateState(newState);
             }
         }
     }
