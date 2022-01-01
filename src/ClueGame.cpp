@@ -8,6 +8,7 @@ ClueGame::ClueGame(){
 void ClueGame::print(){
     std::cout << CLEAR_SCREEN;
     std::cout << MOVE_TO_TOP_LEFT;
+    std::cout << "You are playing as: " << card[0].getPlayerName(ourPlayer) << "\n";
     ClueCard::print();
     std::cout << MOVE_TO_MESSAGE_POS "Round #" << roundCounter << "\n";
     std::cout << "\n";
@@ -60,6 +61,8 @@ void ClueGame::update(){
     guess.push_back(getElement(ClueElement::IDX_CE_WEAPONS    ,ClueElement::NUM_CE_WEAPONS     , "Select A Weapon: ")   );
     guess.push_back(getElement(ClueElement::IDX_CE_CHARACTERS ,ClueElement::NUM_CE_CHARACTERS  , "Select A Character: "));
 
+    pickPlayer("What Player answered?", true);
+
     updateCard(currentPlayer, guess);
     //todo update currentPlayer
     ClueGame::print();
@@ -77,8 +80,16 @@ bool ClueGame::isGameOver(){
     return gameOver;
 }
 
-void ClueGame::printPickPlayerMessage(){
-    std::cout << "Pick a player:\n";
+void ClueGame::printPickPlayerMessage(std::string message, bool takeNoneForAnswer){
+    std::cout << message << "\n";
+
+    // -1 was chosen over CARDLEN + 1 to make it unambiguous
+    // when selecting No One as the option
+    if(takeNoneForAnswer){
+        std::cout << "(-1): No One | ";
+    }
+
+
     for(int i = 0; i < CARDWIDTH; i++){
         std::cout << i << ": " << card[0].getPlayerName(static_cast<ClueCard::playerData::CCPLAYER>(i));
         if(i-1 != CARDWIDTH){
@@ -87,39 +98,41 @@ void ClueGame::printPickPlayerMessage(){
     }
     std::cout << "\n";
 }
-void ClueGame::pickPlayer(){
-    printPickPlayerMessage();
+ClueCard::playerData::CCPLAYER ClueGame::pickPlayer(std::string message, bool takeNoneForAnswer){
+    printPickPlayerMessage(message, takeNoneForAnswer);
     bool gettingInput = true;
-    int result;
+    int input;
+    std::string temp;
+    ClueCard::playerData::CCPLAYER res;
 
     // loop until good input
     while(gettingInput){
-        std::string temp;
         getline(std::cin, temp);
         try{
-            result = std::stoi(temp);
+            input = std::stoi(temp);
 
-            if(result < CARDWIDTH && result >= 0){
+            if(input < CARDWIDTH && input >= (takeNoneForAnswer? -1 : 0)){
                 gettingInput = false;
-                ourPlayer = static_cast<ClueCard::playerData::CCPLAYER>(result);
+                res = static_cast<ClueCard::playerData::CCPLAYER>(input);
             } else {
                 throw std::out_of_range("bad val");
             }
 
         } catch (std::logic_error& e){
             print();
-            printPickPlayerMessage();
-            std::cout << "Please choose a number between 0 and " << CARDWIDTH - 1 << "\n";
+            printPickPlayerMessage(message);
+            std::cout << "Please choose a number between " << (takeNoneForAnswer? -1 : 0) << " and " << CARDWIDTH - 1 << "\n";
         }
     }
-    return;
+    return res;
 }
+
 // this is provided as an alternative to calling ClueGame::update()
 // and checking ClueGame::isGameOver()
 // to allow a game to be run with one line
 void ClueGame::start(){
     
-    pickPlayer();
+    ourPlayer = pickPlayer("Select your player");
     while(!gameOver){
         update();
     }

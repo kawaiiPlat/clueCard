@@ -22,7 +22,7 @@ class ClueGame: public ClueCard{
         ClueGame();
         void print();
         void start();
-        void pickPlayer();
+        ClueCard::playerData::CCPLAYER pickPlayer(std::string message, bool takeNoneForAnswer = false);
         void update();
         bool isGameOver();
 
@@ -34,8 +34,7 @@ class ClueGame: public ClueCard{
     bool gameOver = false;
     ClueElement::CEIDS getElement(int START_IDX, int NUM_OF_TYPE, std::string message);
     void printGetElementMessage(int START_IDX, int NUM_OF_TYPE, std::string message);
-    void printPickPlayerMessage();
-
+    void printPickPlayerMessage(std::string message, bool takeNoneForAnswer = false);
 };
 
 #endif
