@@ -131,12 +131,15 @@ void ClueCard::print(ClueCard::playerData::CCPLAYER activePlayer){
                     std::cout << COLOR_GREEN;
                     break;
             }
+            
+            // if the player who's column we're on is actively guessing, mark them with background color
+            if(card[j].getPlayer() == activePlayer){
+                std::cout << COLOR_MAGENTAB;
+            }
 
             // print the state out
-            std::cout << card[j][i].getNumTimesWasPossible() << " ";
-                
-            //clear the color
-            std::cout << COLOR_NC;
+            // and clear the color
+            std::cout << card[j][i].getNumTimesWasPossible() << COLOR_NC << " ";
         }
         // print the end of line bar
         std::cout << "|\n";

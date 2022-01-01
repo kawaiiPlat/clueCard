@@ -9,7 +9,7 @@ void ClueGame::print(){
     std::cout << CLEAR_SCREEN;
     std::cout << MOVE_TO_TOP_LEFT;
     std::cout << "You are playing as: " << card[0].getPlayerName(ourPlayer) << "\n";
-    ClueCard::print();
+    ClueCard::print(currentPlayer);
     std::cout << MOVE_TO_MESSAGE_POS "Round #" << roundCounter << "\n";
     std::cout << "\n";
 }
@@ -27,7 +27,7 @@ void ClueGame::printGetElementMessage(int START_IDX, int NUM_OF_TYPE, std::strin
 }
 ClueElement::CEIDS ClueGame::getElement(int START_IDX, int NUM_OF_TYPE, std::string message){
 
-    print();
+    ClueGame::print();
     printGetElementMessage(START_IDX, NUM_OF_TYPE, message);
     bool gettingInput = true;
     int result;
@@ -46,7 +46,7 @@ ClueElement::CEIDS ClueGame::getElement(int START_IDX, int NUM_OF_TYPE, std::str
             }
 
         } catch (std::logic_error& e){
-            print();
+            ClueGame::print();
             printGetElementMessage(START_IDX, NUM_OF_TYPE, message);
             std::cout << "Please choose a number between 0 and " << NUM_OF_TYPE - 1 << "\n";
         }
@@ -62,8 +62,6 @@ void ClueGame::update(){
     guess.push_back(getElement(ClueElement::IDX_CE_CHARACTERS ,ClueElement::NUM_CE_CHARACTERS  , "Select A Character: "));
 
     ClueCard::playerData::CCPLAYER whoAnswered = pickPlayer("What Player answered?", true);
-
-    //todo check to see if the player who answered was the current player which makes no sense
 
     updateCard(whoAnswered, guess);
     //todo update currentPlayer
@@ -121,7 +119,7 @@ ClueCard::playerData::CCPLAYER ClueGame::pickPlayer(std::string message, bool ta
             }
 
         } catch (std::logic_error& e){
-            print();
+            ClueGame::print();
             printPickPlayerMessage(message);
             std::cout << "Please choose a number between " << (takeNoneForAnswer? -1 : 0) << " and " << CARDWIDTH - 1 << "\n";
         }
