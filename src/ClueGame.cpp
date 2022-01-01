@@ -63,7 +63,16 @@ void ClueGame::update(){
     updateCard(currentPlayer, guess);
     //todo update currentPlayer
     ClueGame::print();
-    std::cin.get();
+
+    std::cout << MOVE_TO_MESSAGE_POS << "Press Enter to advance, or 'q' and Enter to end the game:\n";
+
+    std::string line;
+    getline(std::cin, line);
+
+    if(line == "q"){
+        gameOver = true;
+    }
+
 }
 bool ClueGame::isGameOver(){
     return gameOver;
@@ -115,4 +124,5 @@ void ClueGame::start(){
     while(!gameOver){
         update();
     }
+    std::cout << "Thanks for playing\n";
 }
