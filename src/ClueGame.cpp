@@ -63,6 +63,20 @@ void ClueGame::update(){
 
     ClueCard::playerData::CCPLAYER whoAnswered = pickPlayer("What Player answered?", true);
 
+    //todo check to see if the player who answered was the current player which makes no sense
+    if(whoAnswered == ClueCard::playerData::CCPLAYER::NONE){
+        gameOver = true;
+        std::cout << "The game is over, accuse with:";
+
+        for(ClueElement::CEIDS element : guess){
+            std::cout << " " << ClueElement::strCEIDS[(int)element];
+        }
+
+        std::cout << "\n";
+
+        return;
+    }
+
     updateCard(whoAnswered, guess);
     //todo update currentPlayer
     ClueGame::print();
