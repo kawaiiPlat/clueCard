@@ -15,7 +15,6 @@
 class ClueCard{
     public:
         ClueCard();
-        int print();
         void updateCard(int playerWhoShowed, std::vector<ClueElement::CEIDS> whatWasSuggested);
 
         static const int CARDLEN   = 21;
@@ -64,6 +63,7 @@ class ClueCard{
 
         playerData& operator[](int);
 
+        void print(ClueCard::playerData::CCPLAYER activePlayer = ClueCard::playerData::CCPLAYER::NONE);
 
         using card_t = std::vector<playerData>;
         // the card data can be accessed with [column][row], aka [player][element]

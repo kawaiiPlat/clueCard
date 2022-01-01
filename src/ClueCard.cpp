@@ -56,7 +56,7 @@ void ClueCard::updateCard(int playerWhoShowed, std::vector<ClueElement::CEIDS> w
 };
 
 
-int ClueCard::print(){
+void ClueCard::print(ClueCard::playerData::CCPLAYER activePlayer){
 
     std::cout   << "The card is currently:\n";
 
@@ -94,6 +94,9 @@ int ClueCard::print(){
 
             case ClueCard::playerData::CCPLAYER::WHITE:
                 std::cout << COLOR_WHITE;
+                break;
+            case ClueCard::playerData::CCPLAYER::NONE:
+                // the compiler requests that this be handled, and now it is
                 break;
         }
         std::cout << c << COLOR_NC " ";
@@ -142,7 +145,6 @@ int ClueCard::print(){
     std::cout   << std::setw(31)
                 << std::setfill('-')
                 << "\n";
-    return 0;
 }
 
 
