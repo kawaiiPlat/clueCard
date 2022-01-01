@@ -61,9 +61,11 @@ void ClueGame::update(){
     guess.push_back(getElement(ClueElement::IDX_CE_WEAPONS    ,ClueElement::NUM_CE_WEAPONS     , "Select A Weapon: ")   );
     guess.push_back(getElement(ClueElement::IDX_CE_CHARACTERS ,ClueElement::NUM_CE_CHARACTERS  , "Select A Character: "));
 
-    pickPlayer("What Player answered?", true);
+    ClueCard::playerData::CCPLAYER whoAnswered = pickPlayer("What Player answered?", true);
 
-    updateCard(currentPlayer, guess);
+    //todo check to see if the player who answered was the current player which makes no sense
+
+    updateCard(whoAnswered, guess);
     //todo update currentPlayer
     ClueGame::print();
 
