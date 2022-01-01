@@ -119,19 +119,24 @@ int ClueCard::print(){
         for(int j = 0; j < CARDWIDTH; j++){
             //this is the "element" index
 
-            int numPos = card[j][i].getNumTimesWasPossible();
-            if(numPos == 0){
-                std::cout << COLOR_BRIGHT_BLACK;
-            } else if(numPos == 1){
-                std::cout << COLOR_YELLOW;
-            } else if(numPos == 2){
-                std::cout << COLOR_CYAN;
-            } else if(numPos > 2){
-                std::cout << COLOR_GREEN;
+            ClueElement::CESTATE elementState = card[j][i].getElementState();
+            switch (elementState){
+                case ClueElement::CESTATE::NOTHING:
+                    std::cout << COLOR_BRIGHT_BLACK;
+                    break;
+                case ClueElement::CESTATE::DOESNTHAVE:
+                    std::cout << COLOR_BLACK;
+                    break;
+                case ClueElement::CESTATE::POSSIBLE:
+                    std::cout << COLOR_CYAN;
+                    break;
+                case ClueElement::CESTATE::SURE:
+                    std::cout << COLOR_GREEN;
+                    break;
             }
 
             // print the state out
-            std::cout << card[j][i].getElementState() << " ";
+            std::cout << card[j][i].getNumTimesWasPossible() << " ";
                 
             //clear the color
             std::cout << COLOR_NC;

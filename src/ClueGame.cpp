@@ -65,7 +65,6 @@ void ClueGame::update(){
     ClueGame::print();
 
     std::cout << MOVE_TO_MESSAGE_POS << "Press Enter to advance, or 'q' and Enter to end the game:\n";
-
     std::string line;
     getline(std::cin, line);
 
