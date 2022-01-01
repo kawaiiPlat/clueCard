@@ -16,6 +16,9 @@ bool ClueCard::playerData::setPlayer(CCPLAYER player){
 const char* ClueCard::playerData::getPlayerName(){
     return ClueCard::playerData::strCCPLAYER[player];
 }
+const char* ClueCard::playerData::getPlayerName(CCPLAYER target){
+    return ClueCard::playerData::strCCPLAYER[(int)target];
+}
 ClueCard::playerData::CCPLAYER ClueCard::playerData::getPlayer(){
     return player;
 }

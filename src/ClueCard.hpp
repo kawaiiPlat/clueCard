@@ -55,6 +55,7 @@ class ClueCard{
 
                 col_t column;
                 const char* getPlayerName();
+                const char* getPlayerName(CCPLAYER target);
                 CCPLAYER getPlayer();
 
                 ClueElement::Element& operator[](int);

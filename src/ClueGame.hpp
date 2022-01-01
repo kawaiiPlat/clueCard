@@ -21,16 +21,20 @@ class ClueGame: public ClueCard{
     public:
         ClueGame();
         void print();
+        void start();
+        void pickPlayer();
         void update();
         bool isGameOver();
 
     protected:
     //random choice of starter
     ClueCard::playerData::CCPLAYER currentPlayer = ClueCard::playerData::CCPLAYER::RED;
-    int roundCounter;
+    ClueCard::playerData::CCPLAYER ourPlayer = ClueCard::playerData::CCPLAYER::GREEN;
+    int roundCounter = 0;
     bool gameOver = false;
     ClueElement::CEIDS getElement(int START_IDX, int NUM_OF_TYPE, std::string message);
     void printGetElementMessage(int START_IDX, int NUM_OF_TYPE, std::string message);
+    void printPickPlayerMessage();
 
 };
 
